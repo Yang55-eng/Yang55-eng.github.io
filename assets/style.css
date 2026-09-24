@@ -1,0 +1,157 @@
+/* ============================================================
+   杨志胜的小窝 · 全局样式
+   设计原则：简洁白底 + 卡片布局 + 悬停反馈，仿个人博客小窝风格
+   ============================================================ */
+:root {
+  --green-deep: #14483a;      /* 主色：深绿（hero 背景、强调） */
+  --green-mid: #1d9e75;       /* 中绿：链接、按钮 */
+  --green-light: #e1f5ee;     /* 浅绿：卡片底、高亮块 */
+  --ink: #2c2c2a;             /* 正文黑 */
+  --ink-soft: #5f5e5a;        /* 次级文字 */
+  --paper: #ffffff;
+  --bg: #f6f7f6;              /* 页面底色 */
+  --radius: 12px;
+  --shadow: 0 2px 10px rgba(20, 72, 58, 0.08);
+  --shadow-hover: 0 8px 24px rgba(20, 72, 58, 0.16);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.7;
+}
+a { color: var(--green-mid); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; }
+
+/* ---------- 顶部导航 ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(20, 72, 58, 0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 56px;
+}
+.nav .brand {
+  font-weight: 600; font-size: 16px; color: var(--green-deep);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav .brand svg { width: 20px; height: 20px; }
+.nav .links { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.nav .links a {
+  color: var(--ink-soft); font-size: 14px; padding: 6px 12px;
+  border-radius: 8px; transition: all .2s;
+}
+.nav .links a:hover { color: var(--green-deep); background: var(--green-light); text-decoration: none; }
+.nav .links a.active { color: var(--green-deep); background: var(--green-light); font-weight: 500; }
+
+/* ---------- Landing 首屏 ---------- */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; color: #fff; text-align: center;
+}
+.hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero > .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 24px; }
+.hero .avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.85); overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.35); background: #fff;
+}
+.hero .avatar svg { width: 100%; height: 100%; display: block; }
+.hero .typing {
+  font-size: 34px; font-weight: 600; letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45); min-height: 52px;
+}
+.hero .typing .cursor { display: inline-block; width: 3px; height: 34px; background: #fff; vertical-align: -6px; margin-left: 3px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero .quote {
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--radius); padding: 14px 22px; max-width: 460px;
+  font-size: 14px; backdrop-filter: blur(4px);
+}
+.hero .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 2; font-size: 12px; opacity: .85; animation: float 2s ease-in-out infinite; }
+@keyframes float { 50% { transform: translate(-50%, 8px); } }
+
+/* ---------- 通用容器 ---------- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+.page-title { font-size: 22px; font-weight: 600; color: var(--green-deep); margin-bottom: 6px; }
+.page-sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 28px; }
+
+/* ---------- 布局：主栏 + 侧栏 ---------- */
+.layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: var(--paper); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px; transition: all .25s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+.card h3 a { color: inherit; }
+.card p { font-size: 14px; color: var(--ink-soft); }
+.card .meta { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; flex-wrap: wrap; }
+.card .meta .tag { color: var(--green-mid); background: var(--green-light); padding: 1px 10px; border-radius: 999px; }
+.cover { height: 120px; border-radius: 8px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; letter-spacing: 2px; font-size: 18px; }
+.cover.c1 { background: var(--green-deep); }
+.cover.c2 { background: #0f6e56; }
+.cover.c3 { background: #185fa5; }
+
+/* ---------- 侧栏 ---------- */
+.side .profile { text-align: center; }
+.side .profile .avatar { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; margin: 6px auto 12px; border: 3px solid var(--green-light); }
+.side .profile .avatar svg { width: 100%; height: 100%; display: block; }
+.side .profile .name { font-weight: 600; font-size: 17px; }
+.side .profile .motto { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+.side .btn-gh {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  background: var(--green-mid); color: #fff; font-size: 13.5px;
+  padding: 8px 18px; border-radius: 999px; transition: all .2s;
+}
+.side .btn-gh:hover { background: var(--green-deep); text-decoration: none; transform: translateY(-2px); }
+.side .widget { margin-top: 20px; }
+.side .widget h4 { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--green-deep); }
+.side .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.side .tags span { font-size: 12.5px; background: var(--green-light); color: var(--green-deep); padding: 3px 12px; border-radius: 999px; }
+
+/* ---------- 代码块 ---------- */
+.code {
+  background: #10241d; color: #d7efe4; border-radius: 10px;
+  padding: 16px 18px; font-family: Consolas, monospace; font-size: 13.5px;
+  overflow-x: auto; position: relative; margin: 14px 0;
+}
+.code .hint { position: absolute; top: 10px; right: 14px; font-size: 11px; color: #6f9c8a; }
+
+/* ---------- 项目页 ---------- */
+.proj { display: flex; flex-direction: column; gap: 18px; }
+.proj .head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.badge { font-size: 12px; padding: 2px 10px; border-radius: 999px; background: var(--green-light); color: var(--green-deep); }
+.badge.hot { background: #fdeeee; color: #a32d2d; }
+.feature-list { list-style: none; margin-top: 10px; }
+.feature-list li { font-size: 14px; color: var(--ink-soft); padding: 4px 0 4px 22px; position: relative; }
+.feature-list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--green-mid); }
+.dl-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px;
+  border-radius: 10px; font-size: 14px; transition: all .2s; cursor: pointer; border: none;
+}
+.btn.primary { background: var(--green-mid); color: #fff; }
+.btn.primary:hover { background: var(--green-deep); text-decoration: none; transform: translateY(-2px); }
+.btn.ghost { background: var(--green-light); color: var(--green-deep); }
+.btn.ghost:hover { background: #ceebdf; text-decoration: none; transform: translateY(-2px); }
+
+/* ---------- 友链 / 关于 ---------- */
+.friend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.empty-tip { text-align: center; color: var(--ink-soft); font-size: 14px; padding: 40px 0; }
+.about p { font-size: 14.5px; color: var(--ink-soft); margin: 10px 0; }
+.about strong { color: var(--green-deep); }
+
+/* ---------- 页脚 ---------- */
+.footer {
+  text-align: center; color: var(--ink-soft); font-size: 12.5px;
+  padding: 28px 16px 36px; border-top: 1px solid rgba(20,72,58,.08);
+}
+.footer a { color: var(--green-mid); }

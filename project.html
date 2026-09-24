@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目 · 杨志胜的小窝</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="project">
+<main class="wrap">
+  <div class="page-title">项目</div>
+  <div class="page-sub">自制的开源小工具，全部免费使用</div>
+
+  <div class="proj">
+    <!-- 项目一：生理实验报告技能 -->
+    <article class="card">
+      <div class="head">
+        <h3 style="margin:0;">hnau-physio-report · 动物生理学实验报告一键生成</h3>
+        <span class="badge hot">已上架</span>
+        <span class="badge">v1.0.0</span>
+      </div>
+      <p style="margin-top:10px;">一个 WorkBuddy 技能：把课程 PPT 与实验数据交给它，自动产出<strong>格式严格符合学校模板</strong>的 .docx 实验报告论文。</p>
+      <ul class="feature-list">
+        <li>格式严格按华中农业大学模板：黑体题目 / 宋体正文 / 三线表 / 参考文献上角标可点击跳转</li>
+        <li>WPS 字体兼容经渲染层验证：用 WPS 引擎导出 PDF 实测 342 个中文片段字体全部正确</li>
+        <li>防编造闸门：所有数值必须申报来源（用户 / 课件 / 文献），来源不明直接阻断生成</li>
+        <li>缺数据主动弹窗询问，绝不擅自编造"实测值"</li>
+        <li>零第三方依赖：Python 标准库即可运行，装了 WorkBuddy 就能用</li>
+      </ul>
+      <div class="code"><span class="hint">PowerShell 一键安装（地址随部署域名自动生成）</span><span id="installCmd">正在生成安装命令…</span></div>
+      <div class="dl-row">
+        <a class="btn primary" href="downloads/hnau-physio-report-skill.zip" download>下载技能包 (37KB)</a>
+        <a class="btn ghost" href="https://hnau-physio-report.app.workbuddy.host/" target="_blank" rel="noopener">在线安装页</a>
+      </div>
+      <div class="meta">
+        <span>发布于 2026-09-24</span>
+        <span class="tag">WorkBuddy Skill</span>
+        <span class="tag">Python</span>
+        <span class="tag">办公自动化</span>
+      </div>
+    </article>
+
+    <!-- 项目二：本站 -->
+    <article class="card">
+      <div class="head">
+        <h3 style="margin:0;">本站 · 纯静态个人小窝</h3>
+        <span class="badge">开发中</span>
+      </div>
+      <p style="margin-top:10px;">你现在看到的这个网站：零框架、零依赖的纯 HTML/CSS/JS，托管在 GitHub Pages 上，源码即站点。后续计划加入评论（giscus）与随笔时间线。</p>
+      <div class="meta">
+        <span>发布于 2026-09-24</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+    </article>
+  </div>
+</main>
+<footer class="footer">
+  © 2026 杨志胜 · Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a><br>
+  <span id="run-days"></span>
+</footer>
+<script src="assets/main.js"></script>
+<script>
+  /* 根据当前访问地址动态生成一键安装命令，部署到任何域名都正确 */
+  (function () {
+    var url = location.origin + location.pathname.replace(/[^/]*$/, "") + "downloads/install.ps1";
+    document.getElementById("installCmd").textContent =
+      'powershell -NoProfile -ExecutionPolicy Bypass -Command "irm \\'' + url + "\\' | iex\"";
+  })();
+</script>
+</body>
+</html>

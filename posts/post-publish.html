@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>免费分发一个技能：公众号、自建站与 GitHub Pages 怎么选 · 杨志胜的小窝</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-page="home">
+<main class="wrap">
+  <article class="card" style="max-width:820px; margin:0 auto; padding:32px;">
+    <h1 style="font-size:22px; color:#14483a;">免费分发一个技能：公众号、自建站与 GitHub Pages 怎么选</h1>
+    <div class="meta" style="margin:10px 0 24px;">
+      <span>发布于 2026-09-24</span>
+      <span class="tag">杂记</span><span class="tag">GitHub Pages</span>
+    </div>
+
+    <p style="font-size:14.5px; color:#5f5e5a;">做完了技能，下一个问题是：怎么让同学装上？实测了三种免费渠道，结论是<strong style="color:#14483a;">各管一段</strong>。</p>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">公众号：传播行，分发不行</h2>
+    <p style="font-size:14.5px; color:#5f5e5a;">个人订阅号未认证不能在正文插外部链接（唯一入口是文末「阅读原文」），也没有原生附件功能。发教程文章引流没问题，但安装命令没法在微信里执行。</p>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">托管平台：注意资源类型限制</h2>
+    <p style="font-size:14.5px; color:#5f5e5a;">WorkBuddy「发布为应用」托管静态站实测很快，但个别托管方会拦截 .zip/.cmd 等存档类资源（HTTP 403）。解法是把安装包 base64 内嵌进安装脚本，让脚本自包含，不依赖下载压缩包。</p>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">GitHub Pages：分发行，国内访问慢</h2>
+    <p style="font-size:14.5px; color:#5f5e5a;">免费、HTTPS、绑自定义域名也免费，不拦 zip。限制：站点 ≤1GB、月流量软上限 100GB、不支持后端。短板是服务器在国外，国内访问时快时慢——所以代码放 GitHub 仓库最合适（版本管理、Issue 收反馈），面向同学的分发页放在国内可直达的托管上。</p>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">最终组合（零成本）</h2>
+    <ul class="feature-list">
+      <li>安装/分发：WorkBuddy 免费托管页（国内直达）</li>
+      <li>代码与版本：GitHub 仓库 + 本站（Pages 托管项目页与教程）</li>
+      <li>传播：公众号发教程文，文末「阅读原文」挂安装页链接</li>
+    </ul>
+  </article>
+</main>
+<footer class="footer">
+  © 2026 杨志胜 · Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a><br>
+  <span id="run-days"></span>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

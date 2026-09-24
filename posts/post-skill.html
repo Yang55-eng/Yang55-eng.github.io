@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>做一个「动物生理学实验报告一键生成」技能的全过程 · 杨志胜的小窝</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-page="home">
+<main class="wrap">
+  <article class="card" style="max-width:820px; margin:0 auto; padding:32px;">
+    <h1 style="font-size:22px; color:#14483a;">做一个「动物生理学实验报告一键生成」技能的全过程</h1>
+    <div class="meta" style="margin:10px 0 24px;">
+      <span>发布于 2026-09-24</span>
+      <span class="tag">工具开发</span><span class="tag">Python</span><span class="tag">docx</span>
+    </div>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">它解决什么问题</h2>
+    <p style="font-size:14.5px; color:#5f5e5a;">实验报告的排版是最典型的重复劳动：模板固定（黑体题目、宋体正文、三线表、参考文献上角标），内容每次都要照着 PPT 和原始记录重写一遍。这个技能（hnau-physio-report）把两件事分开：<strong style="color:#14483a;">格式交给脚本</strong>，<strong style="color:#14483a;">内容交给 AI 读取课件生成</strong>，最后人工只补实验原始数据。</p>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">三个关键设计</h2>
+    <ul class="feature-list">
+      <li><strong>WPS 字体兼容</strong>：docx 里含中文的文本片段必须写 <code>w:hint="eastAsia"</code>，否则 WPS 显示字体不正确。我们用 WPS 自身的 COM 引擎导出 PDF 再读嵌入字体，实测 342 个中文片段全部正确——验证「最终渲染结果」而不是只看 XML。</li>
+      <li><strong>防编造闸门</strong>：生成脚本扫描全文「数值+单位」读数，每个读数必须在 evidence.claims 里申报来源（用户 / 课件 / 文献 / 推导），来源不明直接阻断并列出位置。实测旧版报告 14 处编造值全部被拦下。</li>
+      <li><strong>缺数据先弹窗</strong>：表格里有"待填"占位符时默认阻断生成，先问用户"现在提供数据还是稍后再填"，确认后才放行。</li>
+    </ul>
+
+    <h2 style="font-size:17px; margin:18px 0 8px;">怎么安装</h2>
+    <div class="code"><span class="hint">PowerShell（Windows）</span>见 <a href="../project.html" style="color:#9fe1cb;">项目页</a>的一键安装命令，或直接下载技能包解压到 .workbuddy\skills\ 目录</div>
+    <p style="font-size:14.5px; color:#5f5e5a;">装好后在 WorkBuddy 里说「按模板写实验报告」，附上课程 PPT 即可。生成后脚本会自动跑两道自检：XML 层格式检查 + WPS 渲染层字体验证。</p>
+  </article>
+</main>
+<footer class="footer">
+  © 2026 杨志胜 · Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a><br>
+  <span id="run-days"></span>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

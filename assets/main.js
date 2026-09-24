@@ -5,7 +5,7 @@
   /* 站点配置：改这里即可换名字与链接 */
   var SITE = {
     name: "杨志胜的小窝",
-    github: "https://github.com/", /* 发布后填 https://github.com/<用户名> */
+    github: "https://github.com/Yang55-eng",
     motto: "行者常至，为者常成",
     since: "2026-09-24" /* 建站日期，用于计算运行天数 */
   };
